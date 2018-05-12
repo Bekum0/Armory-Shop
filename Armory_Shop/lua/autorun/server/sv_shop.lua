@@ -4,6 +4,8 @@ net.Receive("ATbuy",function (len , ply)
 
   local selected = net.ReadString()
   for k,v in pairs(Armes_Shop) do
+for k,ent in pairs (ents.FindByClass("armurerie_police")) do
+  if ply:GetPos():Distance(ent:GetPos()) <= AP_ArmoryDistance then
   	if tostring(k) == selected then
         if v.Price <= ply:getDarkRPVar("money") then
 	    ply:Give(v.Weapon_Entities)
@@ -21,6 +23,8 @@ net.Receive("ATbuy",function (len , ply)
 		end
 	
 	end
+end
+end
 end
 end)
 
